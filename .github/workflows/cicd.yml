@@ -38,6 +38,8 @@ jobs:
 
     - name: Terraform Plan
       run: terraform plan -input=false -var="project_id=${{secrets.GCP_PROJECT_ID}}" -var="region=us-central1"
+      env:
+        TF_VAR_gcp_credentials: ${{ secrets.GCP_CREDENTIALS_JSON }}
 
 #    - name: Terraform Apply
 #      run: terraform apply -auto-approve -input=false -var="project-id=${{secrets.GCP_PROJECT_ID}}" -var="region=us-central1"
